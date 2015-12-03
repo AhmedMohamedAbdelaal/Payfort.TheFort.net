@@ -50,8 +50,39 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="obj\Release\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Release\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Release\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll" />
+    <Content Include="bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.xml" />
+    <Content Include="bin\Debug\Start.Net.Tests.dll" />
+    <Content Include="bin\Debug\Start.Net.Tests.pdb" />
+    <Content Include="bin\Release\Start.Net.Tests.dll" />
+    <Content Include="bin\Release\Start.Net.Tests.pdb" />
+    <Content Include="obj\Debug\Start.Net.Tests.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\Start.Net.Tests.dll" />
+    <Content Include="obj\Debug\Start.Net.Tests.pdb" />
+    <Content Include="obj\Release\Start.Net.Tests.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Release\Start.Net.Tests.dll" />
+    <Content Include="obj\Release\Start.Net.Tests.pdb" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="obj\Debug\Start.Net.Tests.csprojResolveAssemblyReference.cache" />
+    <None Include="obj\Release\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="obj\Release\Start.Net.Tests.csprojResolveAssemblyReference.cache" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="obj\Debug\TempPE\" />
+    <Folder Include="obj\Release\TempPE\" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
