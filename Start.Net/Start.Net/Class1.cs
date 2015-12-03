@@ -8,5 +8,5 @@ namespace Start.Net
 {
     public class Class1
     {
-    }
+    } 
 }
