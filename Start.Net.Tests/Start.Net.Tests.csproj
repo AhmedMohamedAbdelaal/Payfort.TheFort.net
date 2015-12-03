@@ -64,6 +64,8 @@
     <Content Include="bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.xml" />
     <Content Include="bin\Debug\Start.Net.Tests.dll" />
     <Content Include="bin\Debug\Start.Net.Tests.pdb" />
+    <Content Include="bin\Release\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll" />
+    <Content Include="bin\Release\Microsoft.VisualStudio.QualityTools.UnitTestFramework.xml" />
     <Content Include="bin\Release\Start.Net.Tests.dll" />
     <Content Include="bin\Release\Start.Net.Tests.pdb" />
     <Content Include="obj\Debug\Start.Net.Tests.csproj.FileListAbsolute.txt" />

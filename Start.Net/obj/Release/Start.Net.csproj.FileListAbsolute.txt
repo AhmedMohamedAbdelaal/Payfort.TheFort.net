@@ -1,0 +1,4 @@
+E:\GIT\PayFort_Start.Net\Start.Net\bin\Release\Start.Net.dll
+E:\GIT\PayFort_Start.Net\Start.Net\bin\Release\Start.Net.pdb
+E:\GIT\PayFort_Start.Net\Start.Net\obj\Release\Start.Net.dll
+E:\GIT\PayFort_Start.Net\Start.Net\obj\Release\Start.Net.pdb
