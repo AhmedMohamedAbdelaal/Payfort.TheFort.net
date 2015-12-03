@@ -6,7 +6,7 @@ namespace Start.Net.Tests
     [TestClass]
     public class UnitTest1
     {
-        [TestMethod]
+        [TestMethod] 
         public void TestMethod1()
         {
             Assert.IsTrue(1 == 1);
