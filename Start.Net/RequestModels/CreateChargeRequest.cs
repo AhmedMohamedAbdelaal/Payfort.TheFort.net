@@ -1,10 +1,6 @@
 ﻿using Newtonsoft.Json;
 using Start.Net.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace Start.Net.RequestModels
 {
@@ -23,8 +19,9 @@ namespace Start.Net.RequestModels
         public string Currency { get; set; }
 
         [JsonProperty("card")]
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
 
-        public string Card { get; set; }
+        private object Card { get; set; }
 
         [JsonProperty("customer_id")]
         public string CustomerId { get; set; }
@@ -46,5 +43,41 @@ namespace Start.Net.RequestModels
 
         [JsonProperty("shopping_cart")]
         public string ShoppingCart { get; set; }
+
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private bool usesToken = true;
+
+        [JsonIgnore]
+        public string CardToken
+        {
+            get {
+                if (usesToken)
+                    return (string)Card;
+                else
+                    return string.Empty;
+            }
+            set {
+                Card = value;
+                usesToken = true;
+            }
+        }
+
+        [JsonIgnore]
+        public CardDetails CardDetails
+        {
+            get
+            {
+                if (usesToken)
+                    return null;
+                else
+                    return (CardDetails)Card;
+            }
+            set {
+                Card = value;
+                usesToken = false;
+            }
+        }
+
+
     }
 }

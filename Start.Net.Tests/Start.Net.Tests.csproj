@@ -81,6 +81,7 @@
     <Content Include="obj\Release\Start.Net.Tests.pdb" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
     <None Include="obj\Debug\Start.Net.Tests.csprojResolveAssemblyReference.cache" />
     <None Include="obj\Release\DesignTimeResolveAssemblyReferencesInput.cache" />

@@ -11,9 +11,9 @@ namespace Start.Net.ResponseModels
     {
         public bool IsValid
         {
-            get { return Errors == null || Errors.Count() == 0; }
+            get { return Error == null; }
         }
 
-        public List<ValidationError> Errors { get; set; }
+        public StartApiErrorResponse Error { get; set; }
     }
 }

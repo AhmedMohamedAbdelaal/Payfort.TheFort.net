@@ -1,9 +1,5 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Start.Net.Entities
 {
@@ -52,6 +48,6 @@ namespace Start.Net.Entities
         public DateTime? UpdatedAt{ get; set; }
 
         [JsonProperty("card")]
-        public Card Card { get; set; }
+        public CardSummary Card { get; set; }
     }
 }

@@ -50,12 +50,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Constants\Currency.cs" />
+    <Compile Include="Constants\ErrorCode.cs" />
+    <Compile Include="Constants\ErrorType.cs" />
+    <Compile Include="Entities\CardDetails.cs" />
     <Compile Include="RequestModels\RequestBase.cs" />
     <Compile Include="StartChargeService.cs" />
     <Compile Include="Constants\ChargeState.cs" />
-    <Compile Include="Entities\Card.cs" />
+    <Compile Include="Entities\CardSummary.cs" />
     <Compile Include="Entities\Charge.cs" />
-    <Compile Include="Infrastructure\ValidationError.cs" />
+    <Compile Include="Infrastructure\StartApiErrorResponse.cs" />
     <Compile Include="Interfaces\IStartChargeService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RequestModels\CreateChargeRequest.cs" />
