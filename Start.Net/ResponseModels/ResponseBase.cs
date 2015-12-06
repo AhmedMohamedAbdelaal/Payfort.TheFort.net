@@ -11,7 +11,7 @@ namespace Start.Net.ResponseModels
     {
         public bool IsError
         {
-            get { return Error == null; }
+            get { return Error != null; }
         }
 
         public StartApiErrorResponse Error { get; set; }

@@ -64,5 +64,27 @@ namespace Start.Net.Tests
             NUnit.Framework.Assert.IsTrue(!string.IsNullOrEmpty(response.Id));
             Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsTrue(!string.IsNullOrEmpty(response.Id));
         }
+
+        [Test]
+        [TestMethod]
+        public void CreateCharge_UsingCardDetails_Fails()
+        {
+            CreateChargeRequest request = new CreateChargeRequest()
+            {
+                Amount = 50000,
+                Currency = Currency.USD,
+                Email = "john.doe@gmail.com"
+            };
+
+            request.CardDetails = workingCard;
+            request.CardDetails.ExpireYear = 2013;
+
+            CreateChargeResponse response = _service.CreateCharge(request).Response;
+
+            NUnit.Framework.Assert.IsTrue(response.IsError);
+            NUnit.Framework.Assert.IsTrue(string.IsNullOrEmpty(response.Id));
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsTrue(response.IsError);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsTrue(string.IsNullOrEmpty(response.Id));
+        }
     }
 }
