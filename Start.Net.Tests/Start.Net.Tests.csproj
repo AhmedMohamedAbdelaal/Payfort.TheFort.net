@@ -72,8 +72,16 @@
     <Content Include="bin\Debug\Start.Net.Tests.pdb" />
     <Content Include="bin\Release\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll" />
     <Content Include="bin\Release\Microsoft.VisualStudio.QualityTools.UnitTestFramework.xml" />
+    <Content Include="bin\Release\Newtonsoft.Json.dll" />
+    <Content Include="bin\Release\Newtonsoft.Json.xml" />
+    <Content Include="bin\Release\nunit.framework.dll" />
+    <Content Include="bin\Release\nunit.framework.xml" />
+    <Content Include="bin\Release\Start.Net.dll" />
+    <Content Include="bin\Release\Start.Net.pdb" />
     <Content Include="bin\Release\Start.Net.Tests.dll" />
     <Content Include="bin\Release\Start.Net.Tests.pdb" />
+    <Content Include="bin\Release\System.Net.Http.Formatting.dll" />
+    <Content Include="bin\Release\System.Net.Http.Formatting.xml" />
     <Content Include="obj\Debug\Start.Net.Tests.csproj.FileListAbsolute.txt" />
     <Content Include="obj\Debug\Start.Net.Tests.dll" />
     <Content Include="obj\Debug\Start.Net.Tests.pdb" />
@@ -83,6 +91,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="bin\Release\Start.Net.Tests.dll.config" />
     <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
     <None Include="obj\Debug\Start.Net.Tests.csprojResolveAssemblyReference.cache" />
     <None Include="obj\Release\DesignTimeResolveAssemblyReferencesInput.cache" />
