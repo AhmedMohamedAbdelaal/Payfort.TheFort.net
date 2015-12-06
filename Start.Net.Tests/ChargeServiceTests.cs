@@ -4,9 +4,11 @@ using Start.Net.ResponseModels;
 using Start.Net.Entities;
 using NUnit.Framework;
 using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Start.Net.Tests
 {
+    [TestClass]
     [TestFixture]
     public class ChargeServiceTests
     {
@@ -27,6 +29,7 @@ namespace Start.Net.Tests
         }
 
         [Test]
+        [TestMethod]
         public void CreateCharge_UsingToken_Success()
         {
             CreateChargeRequest request = new CreateChargeRequest() {
@@ -38,10 +41,13 @@ namespace Start.Net.Tests
             request.CardToken = "tok_99af1278b71929fb6c2268fce091";
 
             CreateChargeResponse response = _service.CreateCharge(request).Response;
-            Assert.IsFalse(response.IsError);
+
+            NUnit.Framework.Assert.IsFalse(response.IsError);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsFalse(response.IsError);
         }
 
         [Test]
+        [TestMethod]
         public void CreateCharge_UsingCardDetails_Success()
         {
             CreateChargeRequest request = new CreateChargeRequest()
@@ -54,8 +60,9 @@ namespace Start.Net.Tests
             request.CardDetails = workingCard;
 
             CreateChargeResponse response = _service.CreateCharge(request).Response;
-            Console.WriteLine(response.Id);
-            Assert.IsTrue(!string.IsNullOrEmpty(response.Id));
+
+            NUnit.Framework.Assert.IsTrue(!string.IsNullOrEmpty(response.Id));
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsTrue(!string.IsNullOrEmpty(response.Id));
         }
     }
 }
