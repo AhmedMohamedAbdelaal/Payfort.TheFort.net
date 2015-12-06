@@ -1,12 +1,13 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Start.Net.RequestModels;
+﻿using Start.Net.RequestModels;
 using Start.Net.Constants;
 using Start.Net.ResponseModels;
 using Start.Net.Entities;
+using NUnit.Framework;
+using System;
 
 namespace Start.Net.Tests
 {
-    [TestClass]
+    [TestFixture]
     public class ChargeServiceTests
     {
         private StartChargeService _service;
@@ -14,7 +15,7 @@ namespace Start.Net.Tests
 
         public ChargeServiceTests()
         {
-            _service = new StartChargeService("test_sec_k_9bceb341a433a9a5344fe");
+            _service = new StartChargeService("test_sec_k_63b07e79c620fcfee5a24");
             workingCard = new CardDetails()
             {
                 Name = "Abdullah Ahmed",
@@ -25,7 +26,7 @@ namespace Start.Net.Tests
             };
         }
 
-        [TestMethod]
+        [Test]
         public void CreateCharge_UsingToken_Success()
         {
             CreateChargeRequest request = new CreateChargeRequest() {
@@ -40,12 +41,12 @@ namespace Start.Net.Tests
             Assert.IsFalse(response.IsError);
         }
 
-        [TestMethod]
+        [Test]
         public void CreateCharge_UsingCardDetails_Success()
         {
             CreateChargeRequest request = new CreateChargeRequest()
             {
-                Amount = 10000,
+                Amount = 50000,
                 Currency = Currency.USD,
                 Email = "john.doe@gmail.com"
             };
@@ -53,7 +54,7 @@ namespace Start.Net.Tests
             request.CardDetails = workingCard;
 
             CreateChargeResponse response = _service.CreateCharge(request).Response;
-
+            Console.WriteLine(response.Id);
             Assert.IsTrue(!string.IsNullOrEmpty(response.Id));
         }
     }
