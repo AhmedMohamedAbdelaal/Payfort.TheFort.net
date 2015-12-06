@@ -6,6 +6,7 @@ using System.Text;
 using Start.Net.RequestModels;
 using Start.Net.ResponseModels;
 using System.Net;
+using Newtonsoft.Json.Linq;
 
 namespace Start.Net
 {
@@ -39,17 +40,23 @@ namespace Start.Net
             where RequestType : RequestBase, new()
         {
             ApiResponse<ResponseType> apiResponse = new ApiResponse<ResponseType>();
-
-            switch(request.HttpMethod)
+            HttpResponseMessage response = null;
+            switch (request.HttpMethod)
             {
                 case "POST":
                     {
-                        HttpResponseMessage response = _apiClient.PostAsJsonAsync<RequestType>(request.Uri, request).Result;
-                        string responseString = response.Content.ReadAsStringAsync().Result;
+                        response = _apiClient.PostAsJsonAsync<RequestType>(request.Uri, request).Result;
                         apiResponse.Response = response.Content.ReadAsAsync<ResponseType>().Result;
-
                         break;
                     }
+            }
+
+            if (apiResponse.Response.IsError)
+            {
+                string responseString = response.Content.ReadAsStringAsync().Result;
+                JObject json = JObject.Parse(responseString);
+                string extras = json["error"]["extras"].ToString();
+                apiResponse.Response.Error.Extras = extras;
             }
 
             return apiResponse;

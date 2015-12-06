@@ -19,6 +19,6 @@ namespace Start.Net.Infrastructure
         public string Message { get; set; }
 
         [JsonProperty("extas")]
-        public Dictionary<string,string> Extras { get; set; }
+        public string Extras { get; set; }
     }
 }
