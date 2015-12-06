@@ -37,7 +37,7 @@ namespace Start.Net.Tests
             request.CardToken = "tok_99af1278b71929fb6c2268fce091";
 
             CreateChargeResponse response = _service.CreateCharge(request).Response;
-            Assert.IsFalse(response.IsValid);
+            Assert.IsFalse(response.IsError);
         }
 
         [TestMethod]

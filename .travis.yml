@@ -1,5 +1,7 @@
 language: csharp
 solution: Start.Net.sln 
+mono:
+  - weekly
 install:
   - nuget restore Start.Net.sln
   - nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner

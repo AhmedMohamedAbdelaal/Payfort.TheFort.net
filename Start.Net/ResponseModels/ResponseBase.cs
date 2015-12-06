@@ -9,7 +9,7 @@ namespace Start.Net.ResponseModels
 {
     public class ResponseBase
     {
-        public bool IsValid
+        public bool IsError
         {
             get { return Error == null; }
         }

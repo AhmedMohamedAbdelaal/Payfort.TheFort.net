@@ -1,0 +1,14 @@
+E:\GIT\PayFort_Start.Net\Start.Net.Tests\bin\Release\Start.Net.Tests.dll
+E:\GIT\PayFort_Start.Net\Start.Net.Tests\bin\Release\Start.Net.Tests.pdb
+E:\GIT\PayFort_Start.Net\Start.Net.Tests\bin\Release\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+E:\GIT\PayFort_Start.Net\Start.Net.Tests\bin\Release\Microsoft.VisualStudio.QualityTools.UnitTestFramework.xml
+E:\GIT\PayFort_Start.Net\Start.Net.Tests\obj\Release\Start.Net.Tests.dll
+E:\GIT\PayFort_Start.Net\Start.Net.Tests\obj\Release\Start.Net.Tests.pdb
+E:\GIT\PayFort_Start.Net\Start.Net.Tests\bin\Release\Newtonsoft.Json.dll
+E:\GIT\PayFort_Start.Net\Start.Net.Tests\bin\Release\Newtonsoft.Json.xml
+E:\GIT\PayFort_Start.Net\Start.Net.Tests\obj\Release\Start.Net.Tests.csprojResolveAssemblyReference.cache
+E:\GIT\PayFort_Start.Net\Start.Net.Tests\bin\Release\Start.Net.dll
+E:\GIT\PayFort_Start.Net\Start.Net.Tests\bin\Release\System.Net.Http.Formatting.dll
+E:\GIT\PayFort_Start.Net\Start.Net.Tests\bin\Release\Start.Net.pdb
+E:\GIT\PayFort_Start.Net\Start.Net.Tests\bin\Release\System.Net.Http.Formatting.xml
+E:\GIT\PayFort_Start.Net\Start.Net.Tests\bin\Release\Start.Net.Tests.dll.config
