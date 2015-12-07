@@ -1,71 +1,40 @@
 ﻿using Start.Net.Interfaces;
-using System;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Text;
 using Start.Net.RequestModels;
 using Start.Net.ResponseModels;
-using System.Net;
-using Newtonsoft.Json.Linq;
+using Start.Net.Entities;
+using System.Collections.Generic;
 
 namespace Start.Net
 {
-    public class StartChargeService : IStartChargeService
+    public class StartChargeService : BaseService, IStartChargeService
     {
-        private string EndpointBase = @"https://api.start.payfort.com";
-        private HttpClient _apiClient { get; set; }
-
-        private string PrivateKey {get; set;}
-
-        public StartChargeService(string privateKey)
+        public StartChargeService(string privateKey): base(privateKey)
         {
-            _apiClient = new HttpClient();
-            _apiClient.BaseAddress = new Uri(EndpointBase);
-            _apiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            _apiClient.DefaultRequestHeaders.Add("Authorization", GetAuthorizationHeaderValue(privateKey));
-
-            PrivateKey = privateKey;
-
-            System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+         
         }
 
-        public ApiResponse<CreateChargeResponse> CreateCharge(CreateChargeRequest request)
+        public ApiResponse<Charge> CreateCharge(CreateChargeRequest request)
         {
-            ApiResponse<CreateChargeResponse> response = SendApiRequest<CreateChargeRequest, CreateChargeResponse>(request);
+            ApiResponse<Charge> response = SendApiRequest<CreateChargeRequest, Charge>(request);
             return response;
         }
 
-        private ApiResponse<ResponseType> SendApiRequest<RequestType, ResponseType>(RequestType request)
-            where ResponseType : ResponseBase, new()
-            where RequestType : RequestBase, new()
+        public ApiResponse<Charge> GetCharge(GetChargeRequest request)
         {
-            ApiResponse<ResponseType> apiResponse = new ApiResponse<ResponseType>();
-            HttpResponseMessage response = null;
-            switch (request.HttpMethod)
-            {
-                case "POST":
-                    {
-                        response = _apiClient.PostAsJsonAsync<RequestType>(request.Uri, request).Result;
-                        apiResponse.Response = response.Content.ReadAsAsync<ResponseType>().Result;
-                        break;
-                    }
-            }
-
-            if (apiResponse.Response.IsError)
-            {
-                string responseString = response.Content.ReadAsStringAsync().Result;
-                JObject json = JObject.Parse(responseString);
-                string extras = json["error"]["extras"].ToString();
-                apiResponse.Response.Error.Extras = extras;
-            }
-
-            return apiResponse;
+            ApiResponse<Charge> response = SendApiRequest<GetChargeRequest, Charge>(request);
+            return response;
         }
 
-        private string GetAuthorizationHeaderValue(string apiKey)
+        public ApiResponse<CaptureChargeResponse> CaptureCharge(CaptureChargeRequest request)
         {
-            var token = Convert.ToBase64String(Encoding.UTF8.GetBytes(string.Format("{0}:", apiKey)));
-            return string.Format("Basic {0}", token);
+            ApiResponse<CaptureChargeResponse> response = SendApiRequest<CaptureChargeRequest, CaptureChargeResponse>(request);
+            return response;
+        }
+
+        public ApiResponse<List<Charge>> ListCharges(ListChargesRequest request)
+        {
+            ApiResponse<List<Charge>> response = SendApiRequest<ListChargesRequest, List<Charge>>(request);
+            return response;
         }
     } 
 }

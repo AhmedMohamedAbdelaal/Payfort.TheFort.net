@@ -4,7 +4,7 @@ using System.Diagnostics;
 
 namespace Start.Net.RequestModels
 {
-    public class CreateChargeRequest: RequestBase
+    public class CreateChargeRequest : RequestBase
     {
         public CreateChargeRequest()
         {
@@ -50,13 +50,15 @@ namespace Start.Net.RequestModels
         [JsonIgnore]
         public string CardToken
         {
-            get {
+            get
+            {
                 if (usesToken)
                     return (string)Card;
                 else
                     return string.Empty;
             }
-            set {
+            set
+            {
                 Card = value;
                 usesToken = true;
             }
@@ -72,7 +74,8 @@ namespace Start.Net.RequestModels
                 else
                     return (CardDetails)Card;
             }
-            set {
+            set
+            {
                 Card = value;
                 usesToken = false;
             }

@@ -8,7 +8,7 @@ namespace Start.Net.Entities
         public string Id { get; set; }
 
         [JsonProperty("object")]
-        private string Object { get { return "card"; } }
+        public string Object { get; set; }
 
         [JsonProperty("last4")]
         public string Last4 { get; set; }

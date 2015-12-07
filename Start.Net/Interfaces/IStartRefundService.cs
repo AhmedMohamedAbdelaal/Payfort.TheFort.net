@@ -9,12 +9,8 @@ using System.Threading.Tasks;
 
 namespace Start.Net.Interfaces
 {
-    public interface IStartChargeService
+    public interface IStartRefundService
     {
-        ApiResponse<Charge> CreateCharge(CreateChargeRequest request);
-
-        ApiResponse<Charge> GetCharge(GetChargeRequest request);
-
-        ApiResponse<List<Charge>> ListCharges(ListChargesRequest request);
+        ApiResponse<Refund> RefundCharge(RefundChargeRequest request);
     }
 }

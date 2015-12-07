@@ -9,7 +9,7 @@ namespace Start.Net.Entities
         public string Id { get; set; }
 
         [JsonProperty("object")]
-        private string Object { get { return "charge"; } }
+        public string Object { get; set; }
 
         [JsonProperty("amount")]
         public int Amount { get; set; }

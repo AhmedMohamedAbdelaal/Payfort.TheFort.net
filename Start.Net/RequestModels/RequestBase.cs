@@ -10,5 +10,6 @@ namespace Start.Net.RequestModels
     {
         internal string Uri { get; set; }
         internal string HttpMethod { get; set; }
+        protected internal string UriTemplate { get; set; }
     }
 }

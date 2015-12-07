@@ -52,10 +52,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseService.cs" />
     <Compile Include="Constants\Currency.cs" />
     <Compile Include="Constants\ErrorCode.cs" />
     <Compile Include="Constants\ErrorType.cs" />
     <Compile Include="Entities\CardDetails.cs" />
+    <Compile Include="Entities\Refund.cs" />
+    <Compile Include="Interfaces\IStartRefundService.cs" />
+    <Compile Include="RequestModels\CaptureChargeRequest.cs" />
+    <Compile Include="RequestModels\CreateChargeRequest.cs" />
+    <Compile Include="RequestModels\GetChargeRequest.cs" />
+    <Compile Include="RequestModels\ListChargesRequest.cs" />
+    <Compile Include="RequestModels\RefundChargeRequest.cs" />
     <Compile Include="RequestModels\RequestBase.cs" />
     <Compile Include="Constants\ChargeState.cs" />
     <Compile Include="Entities\CardSummary.cs" />
@@ -63,11 +71,10 @@
     <Compile Include="Infrastructure\StartApiErrorResponse.cs" />
     <Compile Include="Interfaces\IStartChargeService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RequestModels\CreateChargeRequest.cs" />
     <Compile Include="ResponseModels\ApiResponse.cs" />
-    <Compile Include="ResponseModels\CreateChargeResponse.cs" />
-    <Compile Include="ResponseModels\ResponseBase.cs" />
+    <Compile Include="ResponseModels\CaptureChargeResponse.cs" />
     <Compile Include="StartChargeService.cs" />
+    <Compile Include="StartRefundService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

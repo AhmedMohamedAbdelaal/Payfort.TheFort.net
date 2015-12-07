@@ -1,7 +1,9 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,7 +12,7 @@ namespace Start.Net.Infrastructure
     public class StartApiErrorResponse
     {
         [JsonProperty("type")]
-        public string Type { get; set;}
+        public string Type { get; set; }
 
         [JsonProperty("code")]
         public string Code { get; set; }
@@ -18,7 +20,7 @@ namespace Start.Net.Infrastructure
         [JsonProperty("message")]
         public string Message { get; set; }
 
-        [JsonProperty("extas")]
+        [JsonProperty("extras")]
         public string Extras { get; set; }
     }
 }
