@@ -17,7 +17,6 @@ namespace Start.Net
     {
         private string EndpointBase = @"https://api.start.payfort.com";
         private HttpClient _apiClient { get; set; }
-        private string PrivateKey { get; set; }
 
         public BaseService(string privateKey)
         {
@@ -25,8 +24,6 @@ namespace Start.Net
             _apiClient.BaseAddress = new Uri(EndpointBase);
             _apiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             _apiClient.DefaultRequestHeaders.Add("Authorization", GetAuthorizationHeaderValue(privateKey));
-
-            PrivateKey = privateKey;
 
             System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
         }
@@ -38,25 +35,24 @@ namespace Start.Net
         {
             ApiResponse<ResponseType> apiResponse = new ApiResponse<ResponseType>();
             HttpResponseMessage httpResponse = null;
+
             switch (request.HttpMethod)
             {
                 case "POST":
                     {
                         httpResponse = _apiClient.PostAsJsonAsync<RequestType>(request.Uri, request).Result;
-                        if (httpResponse.IsSuccessStatusCode)
-                            apiResponse.Response = httpResponse.Content.ReadAsAsync<ResponseType>().Result;
                         break;
                     }
                 case "GET":
                     {
                         httpResponse = _apiClient.GetAsync(request.Uri).Result;
-                        if (httpResponse.IsSuccessStatusCode)
-                            apiResponse.Response = httpResponse.Content.ReadAsAsync<ResponseType>().Result;
                         break;
                     }
             }
 
-            if (!httpResponse.IsSuccessStatusCode)
+            if (httpResponse.IsSuccessStatusCode)
+                apiResponse.Response = httpResponse.Content.ReadAsAsync<ResponseType>().Result;
+            else
             {
                 apiResponse.Error = new StartApiErrorResponse();
                 string responseString = httpResponse.Content.ReadAsStringAsync().Result;
