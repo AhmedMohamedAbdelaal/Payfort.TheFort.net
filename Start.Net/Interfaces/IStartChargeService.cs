@@ -15,6 +15,6 @@ namespace Start.Net.Interfaces
 
         ApiResponse<Charge> GetCharge(GetChargeRequest request);
 
-        ApiResponse<List<Charge>> ListCharges(ListChargesRequest request);
+        PagedApiResponse<Charge> ListCharges(ListChargesRequest request);
     }
 }

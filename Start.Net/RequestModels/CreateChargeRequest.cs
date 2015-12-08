@@ -42,7 +42,7 @@ namespace Start.Net.RequestModels
         public bool Capture { get; set; }
 
         [JsonProperty("shopping_cart")]
-        public string ShoppingCart { get; set; }
+        public ShoppingCart ShoppingCart { get; set; }
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private bool usesToken = true;

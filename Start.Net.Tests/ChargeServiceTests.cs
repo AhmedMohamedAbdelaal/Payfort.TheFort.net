@@ -3,6 +3,8 @@ using Start.Net.Constants;
 using Start.Net.ResponseModels;
 using Start.Net.Entities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+using System.Linq;
 
 namespace Start.Net.Tests
 {
@@ -41,7 +43,7 @@ namespace Start.Net.Tests
             ApiResponse<Charge> response = _service.CreateCharge(_createChargeRequest);
 
             Assert.IsTrue(response.IsError);
-            Assert.IsTrue(string.IsNullOrEmpty(response.Response.Id));
+            Assert.IsTrue(string.IsNullOrEmpty(response.Content.Id));
             Assert.IsTrue(response.Error.Type == ErrorType.Request);
             Assert.AreEqual("Request params are invalid.", response.Error.Message);
             Assert.IsTrue(response.Error.Extras == @"{
@@ -58,8 +60,8 @@ namespace Start.Net.Tests
 
             ApiResponse<Charge> response = _service.CreateCharge(_createChargeRequest);
 
-            Assert.IsTrue(!string.IsNullOrEmpty(response.Response.Id));
-            Assert.IsTrue(response.Response.State == ChargeState.Authorized);
+            Assert.IsTrue(!string.IsNullOrEmpty(response.Content.Id));
+            Assert.IsTrue(response.Content.State == ChargeState.Authorized);
         }
 
         [TestMethod]
@@ -69,8 +71,8 @@ namespace Start.Net.Tests
             _createChargeRequest.Capture = true;
             ApiResponse<Charge> response = _service.CreateCharge(_createChargeRequest);
 
-            Assert.IsTrue(!string.IsNullOrEmpty(response.Response.Id));
-            Assert.IsTrue(response.Response.State == ChargeState.Captured);
+            Assert.IsTrue(!string.IsNullOrEmpty(response.Content.Id));
+            Assert.IsTrue(response.Content.State == ChargeState.Captured);
         }
 
         [TestMethod]
@@ -82,7 +84,7 @@ namespace Start.Net.Tests
             ApiResponse<Charge> response = _service.CreateCharge(_createChargeRequest);
 
             Assert.IsTrue(response.IsError);
-            Assert.IsTrue(string.IsNullOrEmpty(response.Response.Id));
+            Assert.IsTrue(string.IsNullOrEmpty(response.Content.Id));
             Assert.IsTrue(response.Error.Type == ErrorType.Request);
             Assert.AreEqual("Request params are invalid.", response.Error.Message);
         }
@@ -96,7 +98,7 @@ namespace Start.Net.Tests
             ApiResponse<Charge> response = _service.CreateCharge(_createChargeRequest);
 
             Assert.IsTrue(response.IsError);
-            Assert.IsTrue(string.IsNullOrEmpty(response.Response.Id));
+            Assert.IsTrue(string.IsNullOrEmpty(response.Content.Id));
             Assert.IsTrue(response.Error.Type == ErrorType.Banking);
             Assert.AreEqual("Charge was declined.", response.Error.Message);
         }
@@ -111,7 +113,7 @@ namespace Start.Net.Tests
             ApiResponse<Charge> response = _service.CreateCharge(_createChargeRequest);
 
             Assert.IsTrue(response.IsError);
-            Assert.IsTrue(string.IsNullOrEmpty(response.Response.Id));
+            Assert.IsTrue(string.IsNullOrEmpty(response.Content.Id));
             Assert.IsTrue(response.Error.Type == ErrorType.Authentication);
             Assert.AreEqual("Request can not be authenticated with provided API Key.", response.Error.Message);
         }
@@ -125,7 +127,7 @@ namespace Start.Net.Tests
             ApiResponse<Charge> response = _service.CreateCharge(_createChargeRequest);
 
             Assert.IsTrue(response.IsError);
-            Assert.IsTrue(string.IsNullOrEmpty(response.Response.Id));
+            Assert.IsTrue(string.IsNullOrEmpty(response.Content.Id));
             Assert.IsTrue(response.Error.Type == ErrorType.Processing);
             Assert.AreEqual("Internal Server Error. We have been already notified about it.", response.Error.Message);
         }
@@ -135,12 +137,12 @@ namespace Start.Net.Tests
         {
             _createChargeRequest.CardDetails = _workingCard;
 
-            Charge createChargeResponse = _service.CreateCharge(_createChargeRequest).Response;
+            Charge createChargeResponse = _service.CreateCharge(_createChargeRequest).Content;
 
             GetChargeRequest chargeRequest = new GetChargeRequest();
             chargeRequest.ChargeId = createChargeResponse.Id;
 
-            Charge getChargeResponse = _service.GetCharge(chargeRequest).Response;
+            Charge getChargeResponse = _service.GetCharge(chargeRequest).Content;
 
             Assert.AreEqual(createChargeResponse.Id, getChargeResponse.Id);
         }
@@ -162,7 +164,7 @@ namespace Start.Net.Tests
         {
             _createChargeRequest.CardDetails = _workingCard;
 
-            Charge createChargeResponse = _service.CreateCharge(_createChargeRequest).Response;
+            Charge createChargeResponse = _service.CreateCharge(_createChargeRequest).Content;
 
             Assert.IsTrue(createChargeResponse.State == ChargeState.Authorized);
 
@@ -170,7 +172,7 @@ namespace Start.Net.Tests
             captureRequest.ChargeId = createChargeResponse.Id;
             captureRequest.Amount = createChargeResponse.Amount;
 
-            CaptureChargeResponse captureResponse = _service.CaptureCharge(captureRequest).Response;
+            CaptureChargeResponse captureResponse = _service.CaptureCharge(captureRequest).Content;
 
             Assert.AreEqual(createChargeResponse.Id, captureResponse.ChargeId);
             Assert.AreEqual(createChargeResponse.Amount, captureResponse.ChargeAmount);
@@ -178,7 +180,7 @@ namespace Start.Net.Tests
 
             GetChargeRequest getChargeRequest = new GetChargeRequest();
             getChargeRequest.ChargeId = captureRequest.ChargeId;
-            Charge charge = _service.GetCharge(getChargeRequest).Response;
+            Charge charge = _service.GetCharge(getChargeRequest).Content;
 
             Assert.AreEqual(charge.CapturedAmount, captureResponse.CapturedAmount);
             Assert.IsTrue(charge.State == ChargeState.Captured);
@@ -189,7 +191,7 @@ namespace Start.Net.Tests
         {
             _createChargeRequest.CardDetails = _workingCard;
 
-            Charge createChargeResponse = _service.CreateCharge(_createChargeRequest).Response;
+            Charge createChargeResponse = _service.CreateCharge(_createChargeRequest).Content;
             Assert.IsTrue(createChargeResponse.State == ChargeState.Authorized);
 
             CaptureChargeRequest captureRequest = new CaptureChargeRequest();
@@ -207,7 +209,7 @@ namespace Start.Net.Tests
         {
             _createChargeRequest.CardDetails = _workingCard;
             _createChargeRequest.Capture = true;
-            Charge createChargeResponse = _service.CreateCharge(_createChargeRequest).Response;
+            Charge createChargeResponse = _service.CreateCharge(_createChargeRequest).Content;
 
             CaptureChargeRequest captureRequest = new CaptureChargeRequest();
             captureRequest.ChargeId = createChargeResponse.Id;
@@ -220,11 +222,50 @@ namespace Start.Net.Tests
         }
 
         [TestMethod]
-        [Ignore]
-        public void ListChages_Success()
+        public void ListCharges_Success()
         {
+            _createChargeRequest.CardDetails = _workingCard;
+            Charge createChargeResponse = _service.CreateCharge(_createChargeRequest).Content;
+            _service.CreateCharge(_createChargeRequest);
+            _service.CreateCharge(_createChargeRequest);
+
             ListChargesRequest request = new ListChargesRequest();
-            _service.ListCharges(request);
+            PagedApiResponse<Charge> charges = _service.ListCharges(request);
+
+            Assert.IsFalse(charges.IsError);
+            Assert.IsTrue(charges.Content.Count >= 3);
+        }
+
+        [TestMethod]
+        public void ListChages_PagedBefore_Success()
+        {
+            _createChargeRequest.CardDetails = _workingCard;
+            Charge createChargeResponse = _service.CreateCharge(_createChargeRequest).Content;
+            ListChargesRequest request = new ListChargesRequest();
+            DateTime beforeFilter = DateTime.Now.ToUniversalTime();
+            request.Before = beforeFilter;
+
+            PagedApiResponse<Charge> charges = _service.ListCharges(request);
+
+            Assert.IsFalse(charges.IsError);
+            Assert.IsFalse(charges.Content.Any(c => c.Id == createChargeResponse.Id)); // charge should be missing because of pagination
+        }
+
+        [TestMethod]
+        public void ListChages_PagedAfter_Success()
+        {
+            DateTime afterFilter = DateTime.Now.ToUniversalTime();
+            _createChargeRequest.CardDetails = _workingCard;
+
+            Charge createChargeResponse = _service.CreateCharge(_createChargeRequest).Content;
+            ListChargesRequest request = new ListChargesRequest();
+            
+            request.After = afterFilter;
+
+            PagedApiResponse<Charge> charges = _service.ListCharges(request);
+
+            Assert.IsFalse(charges.IsError);
+            Assert.IsTrue(charges.Content.Any(c => c.Id == createChargeResponse.Id)); // charge should be there because of pagination
         }
     }
 }

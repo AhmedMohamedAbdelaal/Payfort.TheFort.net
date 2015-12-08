@@ -22,5 +22,11 @@ namespace Start.Net
             ApiResponse<Refund> response = SendApiRequest<RefundChargeRequest, Refund>(request);
             return response;
         }
+
+        public PagedApiResponse<Refund> ListRefundsForCharge(ListRefundsForChargeRequest request)
+        {
+            PagedApiResponse<Refund> response = GetPagedApiResponse<ListRefundsForChargeRequest, Refund>(request);
+            return response;
+        }
     }
 }

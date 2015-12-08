@@ -28,6 +28,6 @@ namespace Start.Net.Entities
         public string ChargeId { get; set; }
 
         [JsonProperty("charge")]
-        public Charge Charge { get; set; }
+        public ChargeSummary ChargeSummary { get; set; }
     }
 }

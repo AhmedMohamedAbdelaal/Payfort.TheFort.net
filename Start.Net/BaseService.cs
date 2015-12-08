@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using Start.Net.Infrastructure;
 using Start.Net.RequestModels;
 using Start.Net.ResponseModels;
@@ -51,12 +52,55 @@ namespace Start.Net
             }
 
             if (httpResponse.IsSuccessStatusCode)
-                apiResponse.Response = httpResponse.Content.ReadAsAsync<ResponseType>().Result;
+                apiResponse.Content = httpResponse.Content.ReadAsAsync<ResponseType>().Result;
             else
             {
                 apiResponse.Error = new StartApiErrorResponse();
                 string responseString = httpResponse.Content.ReadAsStringAsync().Result;
                 JObject json = JObject.Parse(responseString);
+                apiResponse.Error.Type = json["error"]["type"].ToString();
+                apiResponse.Error.Message = json["error"]["message"].ToString();
+                apiResponse.Error.Code = json["error"]["code"].ToString();
+                apiResponse.Error.Extras = json["error"]["extras"].ToString();
+            }
+
+            return apiResponse;
+        }
+
+        protected PagedApiResponse<ResponseType> GetPagedApiResponse<RequestType, ResponseType>(RequestType request)
+            where RequestType : RequestBase, new()
+            where ResponseType : class, new()
+
+        {
+            PagedApiResponse<ResponseType> apiResponse = new PagedApiResponse<ResponseType>();
+            HttpResponseMessage httpResponse = null;
+
+            switch (request.HttpMethod)
+            {
+                case "POST":
+                    {
+                        httpResponse = _apiClient.PostAsJsonAsync<RequestType>(request.Uri, request).Result;
+                        break;
+                    }
+                case "GET":
+                    {
+                        httpResponse = _apiClient.GetAsync(request.Uri).Result;
+                        break;
+                    }
+            }
+
+            string responseString = httpResponse.Content.ReadAsStringAsync().Result;
+            JObject json = JObject.Parse(responseString);
+
+            if (httpResponse.IsSuccessStatusCode)
+            {
+                string arrayName = typeof(ResponseType).Name.ToLower() + "s";
+                apiResponse.Meta = JsonConvert.DeserializeObject<Meta>(json["meta"].ToString());
+                apiResponse.Content = JsonConvert.DeserializeObject<List<ResponseType>>(json[arrayName].ToString());
+            }
+            else
+            {
+                apiResponse.Error = new StartApiErrorResponse();
                 apiResponse.Error.Type = json["error"]["type"].ToString();
                 apiResponse.Error.Message = json["error"]["message"].ToString();
                 apiResponse.Error.Code = json["error"]["code"].ToString();

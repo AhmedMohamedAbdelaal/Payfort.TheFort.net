@@ -31,9 +31,9 @@ namespace Start.Net
             return response;
         }
 
-        public ApiResponse<List<Charge>> ListCharges(ListChargesRequest request)
+        public PagedApiResponse<Charge> ListCharges(ListChargesRequest request)
         {
-            ApiResponse<List<Charge>> response = SendApiRequest<ListChargesRequest, List<Charge>>(request);
+            PagedApiResponse<Charge> response = GetPagedApiResponse<ListChargesRequest, Charge>(request);
             return response;
         }
     } 

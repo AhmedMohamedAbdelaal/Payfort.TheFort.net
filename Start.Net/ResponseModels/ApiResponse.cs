@@ -11,7 +11,7 @@ namespace Start.Net.ResponseModels
     {
         public ApiResponse()
         {
-            this.Response = new T();
+            this.Content = new T();
         }
 
         public bool IsError
@@ -21,6 +21,6 @@ namespace Start.Net.ResponseModels
 
         public StartApiErrorResponse Error { get; set; }
 
-        public T Response { get; internal set; }
+        public T Content { get; internal set; }
     }
 }

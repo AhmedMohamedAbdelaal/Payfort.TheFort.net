@@ -12,5 +12,7 @@ namespace Start.Net.Interfaces
     public interface IStartRefundService
     {
         ApiResponse<Refund> RefundCharge(RefundChargeRequest request);
+
+        PagedApiResponse<Refund> ListRefundsForCharge(ListRefundsForChargeRequest request);
     }
 }
