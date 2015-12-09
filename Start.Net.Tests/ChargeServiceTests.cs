@@ -6,6 +6,7 @@ using System;
 using System.Linq;
 using Start.Net.RequestModels.Charges;
 using Start.Net.Interfaces;
+using Start.Net.RequestModels.Customers;
 
 namespace Start.Net.Tests
 {
@@ -14,11 +15,13 @@ namespace Start.Net.Tests
     {
         private IStartChargeService _service;
         private CreateChargeRequest _createChargeRequest;
+        private IStartCustomerService _customerService;
         private Card _workingCard; 
 
         public ChargeServiceTests()
         {
             _service = new StartChargeService("test_sec_k_8512e94e69d6a46c67ab2");
+            _customerService = new StartCustomerService("test_sec_k_8512e94e69d6a46c67ab2");
             _workingCard = new Card()
             {
                 Name = "Abdullah Ahmed",
@@ -54,6 +57,34 @@ namespace Start.Net.Tests
         public void CreateCharge_UsingCardDetails_Success()
         {
             _createChargeRequest.CardDetails = _workingCard;
+
+            ApiResponse<Charge> response = _service.CreateCharge(_createChargeRequest);
+
+            Assert.IsTrue(!string.IsNullOrEmpty(response.Content.Id));
+            Assert.IsTrue(response.Content.State == ChargeState.Authorized);
+        }
+
+        [TestMethod]
+        public void CreateCharge_UsingCustomerId_Success()
+        {
+            var createCustomerRequest = new CreateCustomerRequest()
+            {
+                Name = "Customer Name",
+                Description = "Description",
+                Email = "customer@email.com",
+                CardDetails = new Card()
+                {
+                    Name = "Abdullah Ahmed",
+                    Cvc = 123,
+                    ExpireMonth = 12,
+                    ExpireYear = 2020,
+                    Number = "4242424242424242"
+                }
+            };
+
+            ApiResponse<Customer> customer = _customerService.CreateCustomer(createCustomerRequest);
+
+            _createChargeRequest.CustomerId = customer.Content.Id;
 
             ApiResponse<Charge> response = _service.CreateCharge(_createChargeRequest);
 
