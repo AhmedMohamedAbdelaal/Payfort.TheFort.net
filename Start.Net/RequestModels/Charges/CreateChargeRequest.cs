@@ -2,7 +2,7 @@
 using Start.Net.Entities;
 using System.Diagnostics;
 
-namespace Start.Net.RequestModels
+namespace Start.Net.RequestModels.Charges
 {
     public class CreateChargeRequest : RequestBase
     {
@@ -65,14 +65,14 @@ namespace Start.Net.RequestModels
         }
 
         [JsonIgnore]
-        public CardDetails CardDetails
+        public Card CardDetails
         {
             get
             {
                 if (usesToken)
                     return null;
                 else
-                    return (CardDetails)Card;
+                    return (Card)Card;
             }
             set
             {

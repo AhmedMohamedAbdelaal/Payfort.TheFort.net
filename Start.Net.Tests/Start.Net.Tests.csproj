@@ -41,10 +41,6 @@
       <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="nunit.framework, Version=2.6.4.14350, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
-      <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
   </ItemGroup>
   <Choose>
@@ -69,18 +65,17 @@
   <ItemGroup>
     <Content Include="bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll" />
     <Content Include="bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.xml" />
+    <Content Include="bin\Debug\Newtonsoft.Json.dll" />
+    <Content Include="bin\Debug\Start.Net.dll" />
+    <Content Include="bin\Debug\Start.Net.pdb" />
     <Content Include="bin\Debug\Start.Net.Tests.dll" />
     <Content Include="bin\Debug\Start.Net.Tests.pdb" />
     <Content Include="bin\Release\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll" />
     <Content Include="bin\Release\Newtonsoft.Json.dll" />
-    <Content Include="bin\Release\nunit.framework.dll" />
     <Content Include="bin\Release\Start.Net.dll" />
     <Content Include="bin\Release\Start.Net.pdb" />
     <Content Include="bin\Release\Start.Net.Tests.dll" />
     <Content Include="bin\Release\Start.Net.Tests.pdb" />
-    <Content Include="bin\Release\System.Net.Http.dll" />
-    <Content Include="bin\Release\System.Net.Http.Formatting.dll" />
-    <Content Include="bin\Release\System.Net.Http.Formatting.xml" />
     <Content Include="obj\Debug\Start.Net.Tests.csproj.FileListAbsolute.txt" />
     <Content Include="obj\Debug\Start.Net.Tests.dll" />
     <Content Include="obj\Debug\Start.Net.Tests.pdb" />

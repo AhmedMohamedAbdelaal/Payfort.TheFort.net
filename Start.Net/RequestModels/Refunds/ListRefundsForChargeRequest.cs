@@ -1,11 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Start.Net.RequestModels
+namespace Start.Net.RequestModels.Refunds
 {
     public class ListRefundsForChargeRequest: RequestBase
     {

@@ -1,14 +1,8 @@
-﻿using Newtonsoft.Json;
-using Start.Net.ResponseModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 
-namespace Start.Net.RequestModels
+namespace Start.Net.RequestModels.Charges
 {
-    public class ListChargesRequest: RequestBase
+    public class ListChargesRequest : RequestBase
     {
         public ListChargesRequest()
         {

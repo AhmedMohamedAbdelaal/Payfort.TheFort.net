@@ -1,10 +1,10 @@
-﻿using Start.Net.RequestModels;
-using Start.Net.Constants;
+﻿using Start.Net.Constants;
 using Start.Net.ResponseModels;
 using Start.Net.Entities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Linq;
+using Start.Net.RequestModels.Charges;
 
 namespace Start.Net.Tests
 {
@@ -13,12 +13,12 @@ namespace Start.Net.Tests
     {
         private StartChargeService _service;
         private CreateChargeRequest _createChargeRequest;
-        private CardDetails _workingCard; 
+        private Card _workingCard; 
 
         public ChargeServiceTests()
         {
             _service = new StartChargeService("test_sec_k_63b07e79c620fcfee5a24");
-            _workingCard = new CardDetails()
+            _workingCard = new Card()
             {
                 Name = "Abdullah Ahmed",
                 Cvc = 123,

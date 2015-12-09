@@ -1,9 +1,10 @@
-﻿using Start.Net.RequestModels;
-using Start.Net.Constants;
+﻿using Start.Net.Constants;
 using Start.Net.ResponseModels;
 using Start.Net.Entities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Start.Net.Interfaces;
+using Start.Net.RequestModels.Charges;
+using Start.Net.RequestModels.Refunds;
 
 namespace Start.Net.Tests
 {
@@ -14,14 +15,14 @@ namespace Start.Net.Tests
         private IStartChargeService _chargeService;
 
         private CreateChargeRequest _createChargeRequest;
-        private CardDetails _workingCard; 
+        private Card _workingCard; 
 
         public RefundServiceTests()
         {
             _refundService = new StartRefundService("test_sec_k_63b07e79c620fcfee5a24");
             _chargeService = new StartChargeService("test_sec_k_63b07e79c620fcfee5a24");
 
-            _workingCard = new CardDetails()
+            _workingCard = new Card()
             {
                 Name = "Abdullah Ahmed",
                 Cvc = 123,

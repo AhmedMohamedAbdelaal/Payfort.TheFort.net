@@ -1,17 +1,12 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Start.Net.RequestModels
+namespace Start.Net.RequestModels.Refunds
 {
-    public class CaptureChargeRequest: RequestBase
+    public class RefundChargeRequest: RequestBase
     {
-        public CaptureChargeRequest()
+        public RefundChargeRequest()
         {
-            base.UriTemplate = "/charges/{0}/capture";
+            base.UriTemplate = "/charges/{0}/refunds";
             base.HttpMethod = System.Net.WebRequestMethods.Http.Post;
         }
 
@@ -33,5 +28,8 @@ namespace Start.Net.RequestModels
 
         [JsonProperty("amount")]
         public int Amount { get; set; }
+
+        [JsonProperty("reson")]
+        public string Reason { get; set; }
     }
 }

@@ -1,8 +1,7 @@
 ﻿using Start.Net.Interfaces;
-using Start.Net.RequestModels;
 using Start.Net.ResponseModels;
 using Start.Net.Entities;
-using System.Collections.Generic;
+using Start.Net.RequestModels.Charges;
 
 namespace Start.Net
 {

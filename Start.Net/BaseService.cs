@@ -5,16 +5,14 @@ using Start.Net.RequestModels;
 using Start.Net.ResponseModels;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Start.Net
 {
-    public class BaseService
+    public abstract class BaseService
     {
         private string EndpointBase = @"https://api.start.payfort.com";
         private HttpClient _apiClient { get; set; }
@@ -41,7 +39,8 @@ namespace Start.Net
             {
                 case "POST":
                     {
-                        httpResponse = _apiClient.PostAsJsonAsync<RequestType>(request.Uri, request).Result;
+                        HttpContent contentPost = new StringContent(JsonConvert.SerializeObject(request), Encoding.UTF8, "application/json");
+                        httpResponse = _apiClient.PostAsync(request.Uri, contentPost).Result;
                         break;
                     }
                 case "GET":
@@ -52,7 +51,10 @@ namespace Start.Net
             }
 
             if (httpResponse.IsSuccessStatusCode)
-                apiResponse.Content = httpResponse.Content.ReadAsAsync<ResponseType>().Result;
+            {
+                string jsonResponse = httpResponse.Content.ReadAsStringAsync().Result;
+                apiResponse.Content = JsonConvert.DeserializeObject<ResponseType>(jsonResponse);
+            }
             else
             {
                 apiResponse.Error = new StartApiErrorResponse();
@@ -77,11 +79,6 @@ namespace Start.Net
 
             switch (request.HttpMethod)
             {
-                case "POST":
-                    {
-                        httpResponse = _apiClient.PostAsJsonAsync<RequestType>(request.Uri, request).Result;
-                        break;
-                    }
                 case "GET":
                     {
                         httpResponse = _apiClient.GetAsync(request.Uri).Result;

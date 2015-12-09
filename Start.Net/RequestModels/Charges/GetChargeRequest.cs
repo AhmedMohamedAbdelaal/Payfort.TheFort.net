@@ -1,13 +1,13 @@
 ﻿using Newtonsoft.Json;
 
-namespace Start.Net.RequestModels
+namespace Start.Net.RequestModels.Charges
 {
-    public class RefundChargeRequest: RequestBase
+    public class GetChargeRequest : RequestBase
     {
-        public RefundChargeRequest()
+        public GetChargeRequest()
         {
-            base.UriTemplate = "/charges/{0}/refunds";
-            base.HttpMethod = System.Net.WebRequestMethods.Http.Post;
+            base.UriTemplate = "/charges/{0}";
+            base.HttpMethod = System.Net.WebRequestMethods.Http.Get;
         }
 
         private string chargeId;
@@ -25,11 +25,6 @@ namespace Start.Net.RequestModels
                 base.Uri = string.Format(base.UriTemplate, chargeId);
             }
         }
-
-        [JsonProperty("amount")]
-        public int Amount { get; set; }
-
-        [JsonProperty("reson")]
-        public string Reason { get; set; }
     }
 }
+

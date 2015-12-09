@@ -2,7 +2,7 @@
 
 namespace Start.Net.Entities
 {
-    public class CardDetails
+    public class Card
     {
         [JsonProperty("number")]
         public string Number { get; set; }

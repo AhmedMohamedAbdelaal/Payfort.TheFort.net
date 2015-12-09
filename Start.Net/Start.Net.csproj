@@ -37,10 +37,6 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.20710.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System.Net.Http.WebRequest" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -58,20 +54,25 @@
     <Compile Include="Constants\ErrorType.cs" />
     <Compile Include="Constants\RefundReason.cs" />
     <Compile Include="Entities\Address.cs" />
-    <Compile Include="Entities\CardDetails.cs" />
+    <Compile Include="Entities\Card.cs" />
     <Compile Include="Entities\ChargeSummary.cs" />
     <Compile Include="Entities\Customer.cs" />
     <Compile Include="Entities\Item.cs" />
     <Compile Include="Entities\Refund.cs" />
     <Compile Include="Entities\ShoppingCart.cs" />
+    <Compile Include="Interfaces\IStartCustomerService.cs" />
     <Compile Include="Interfaces\IStartRefundService.cs" />
-    <Compile Include="RequestModels\CaptureChargeRequest.cs" />
-    <Compile Include="RequestModels\CreateChargeRequest.cs" />
-    <Compile Include="RequestModels\GetChargeRequest.cs" />
-    <Compile Include="RequestModels\ListChargesRequest.cs" />
-    <Compile Include="RequestModels\ListRefundsForChargeRequest.cs" />
-    <Compile Include="RequestModels\PagedRequestBase.cs" />
-    <Compile Include="RequestModels\RefundChargeRequest.cs" />
+    <Compile Include="RequestModels\Charges\CaptureChargeRequest.cs" />
+    <Compile Include="RequestModels\Charges\CreateChargeRequest.cs" />
+    <Compile Include="RequestModels\Charges\GetChargeRequest.cs" />
+    <Compile Include="RequestModels\Charges\ListChargesRequest.cs" />
+    <Compile Include="RequestModels\Customers\CreateCustomerRequest.cs" />
+    <Compile Include="RequestModels\Customers\DeleteCustomerRequest.cs" />
+    <Compile Include="RequestModels\Customers\GetCustomerRequest.cs" />
+    <Compile Include="RequestModels\Customers\ListCustomersRequest.cs" />
+    <Compile Include="RequestModels\Customers\UpdateCustomerRequest.cs" />
+    <Compile Include="RequestModels\Refunds\ListRefundsForChargeRequest.cs" />
+    <Compile Include="RequestModels\Refunds\RefundChargeRequest.cs" />
     <Compile Include="RequestModels\RequestBase.cs" />
     <Compile Include="Constants\ChargeState.cs" />
     <Compile Include="Entities\CardSummary.cs" />
@@ -81,8 +82,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResponseModels\ApiResponse.cs" />
     <Compile Include="ResponseModels\CaptureChargeResponse.cs" />
+    <Compile Include="ResponseModels\DeleteCustomerResponse.cs" />
     <Compile Include="ResponseModels\PagedApiResponse.cs" />
     <Compile Include="StartChargeService.cs" />
+    <Compile Include="StartCustomerService.cs" />
     <Compile Include="StartRefundService.cs" />
   </ItemGroup>
   <ItemGroup>
