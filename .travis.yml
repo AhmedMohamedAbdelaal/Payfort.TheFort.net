@@ -1,7 +1,5 @@
-language: csharp
+
 solution: Start.Net.sln 
-mono:
-  - weekly
 install:
   - nuget restore Start.Net.sln
 script:
