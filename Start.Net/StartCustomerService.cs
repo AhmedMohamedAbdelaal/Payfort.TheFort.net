@@ -29,12 +29,6 @@ namespace Start.Net
 
         }
 
-        public ApiResponse<DeleteCustomerResponse> DeleteCustomer(DeleteCustomerRequest request)
-        {
-            ApiResponse<DeleteCustomerResponse> response = SendApiRequest<DeleteCustomerRequest, DeleteCustomerResponse>(request);
-            return response;
-        }
-
         public PagedApiResponse<Customer> ListCustomers(ListCustomersRequest request)
         {
             PagedApiResponse<Customer> response = GetPagedApiResponse<ListCustomersRequest, Customer>(request);

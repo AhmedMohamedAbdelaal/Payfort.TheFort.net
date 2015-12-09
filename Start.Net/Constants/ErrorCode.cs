@@ -12,5 +12,9 @@ namespace Start.Net.Constants
         /// The card was declined by the acquiring bank
         /// </summary>
         public const string CardDeclined = "card_declined";
+
+        public const string UnprocessableEntity = "unprocessable_entity";
+
+        public const string NotFound = "not_found";
     }
 }

@@ -24,7 +24,7 @@ namespace Start.Net
             _apiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             _apiClient.DefaultRequestHeaders.Add("Authorization", GetAuthorizationHeaderValue(privateKey));
 
-            System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
         }
 
         protected ApiResponse<ResponseType> SendApiRequest<RequestType, ResponseType>(RequestType request)
@@ -48,22 +48,30 @@ namespace Start.Net
                         httpResponse = _apiClient.GetAsync(request.Uri).Result;
                         break;
                     }
+                case "PUT":
+                    {
+                        HttpContent contentPut = new StringContent(JsonConvert.SerializeObject(request), Encoding.UTF8, "application/json");
+                        httpResponse = _apiClient.PutAsync(request.Uri, contentPut).Result;
+                        break;
+                    }
             }
 
-            if (httpResponse.IsSuccessStatusCode)
+            string jsonResponse = httpResponse.Content.ReadAsStringAsync().Result;
+            if (httpResponse != null)
             {
-                string jsonResponse = httpResponse.Content.ReadAsStringAsync().Result;
-                apiResponse.Content = JsonConvert.DeserializeObject<ResponseType>(jsonResponse);
-            }
-            else
-            {
-                apiResponse.Error = new StartApiErrorResponse();
-                string responseString = httpResponse.Content.ReadAsStringAsync().Result;
-                JObject json = JObject.Parse(responseString);
-                apiResponse.Error.Type = json["error"]["type"].ToString();
-                apiResponse.Error.Message = json["error"]["message"].ToString();
-                apiResponse.Error.Code = json["error"]["code"].ToString();
-                apiResponse.Error.Extras = json["error"]["extras"].ToString();
+                if (httpResponse.IsSuccessStatusCode)
+                {
+                    apiResponse.Content = JsonConvert.DeserializeObject<ResponseType>(jsonResponse);
+                }
+                else
+                {
+                    apiResponse.Error = new StartApiErrorResponse();
+                    JObject json = JObject.Parse(jsonResponse);
+                    apiResponse.Error.Type = json["error"]["type"].ToString();
+                    apiResponse.Error.Message = json["error"]["message"].ToString();
+                    apiResponse.Error.Code = json["error"]["code"].ToString();
+                    apiResponse.Error.Extras = json["error"]["extras"].ToString();
+                }
             }
 
             return apiResponse;
@@ -86,22 +94,25 @@ namespace Start.Net
                     }
             }
 
-            string responseString = httpResponse.Content.ReadAsStringAsync().Result;
-            JObject json = JObject.Parse(responseString);
+            if (httpResponse != null)
+            {
+                string responseString = httpResponse.Content.ReadAsStringAsync().Result;
+                JObject json = JObject.Parse(responseString);
 
-            if (httpResponse.IsSuccessStatusCode)
-            {
-                string arrayName = typeof(ResponseType).Name.ToLower() + "s";
-                apiResponse.Meta = JsonConvert.DeserializeObject<Meta>(json["meta"].ToString());
-                apiResponse.Content = JsonConvert.DeserializeObject<List<ResponseType>>(json[arrayName].ToString());
-            }
-            else
-            {
-                apiResponse.Error = new StartApiErrorResponse();
-                apiResponse.Error.Type = json["error"]["type"].ToString();
-                apiResponse.Error.Message = json["error"]["message"].ToString();
-                apiResponse.Error.Code = json["error"]["code"].ToString();
-                apiResponse.Error.Extras = json["error"]["extras"].ToString();
+                if (httpResponse.IsSuccessStatusCode)
+                {
+                    string arrayName = typeof(ResponseType).Name.ToLower() + "s";
+                    apiResponse.Meta = JsonConvert.DeserializeObject<Meta>(json["meta"].ToString());
+                    apiResponse.Content = JsonConvert.DeserializeObject<List<ResponseType>>(json[arrayName].ToString());
+                }
+                else
+                {
+                    apiResponse.Error = new StartApiErrorResponse();
+                    apiResponse.Error.Type = json["error"]["type"].ToString();
+                    apiResponse.Error.Message = json["error"]["message"].ToString();
+                    apiResponse.Error.Code = json["error"]["code"].ToString();
+                    apiResponse.Error.Extras = json["error"]["extras"].ToString();
+                }
             }
 
             return apiResponse;

@@ -5,19 +5,20 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Linq;
 using Start.Net.RequestModels.Charges;
+using Start.Net.Interfaces;
 
 namespace Start.Net.Tests
 {
     [TestClass]
     public class ChargeServiceTests
     {
-        private StartChargeService _service;
+        private IStartChargeService _service;
         private CreateChargeRequest _createChargeRequest;
         private Card _workingCard; 
 
         public ChargeServiceTests()
         {
-            _service = new StartChargeService("test_sec_k_63b07e79c620fcfee5a24");
+            _service = new StartChargeService("test_sec_k_8512e94e69d6a46c67ab2");
             _workingCard = new Card()
             {
                 Name = "Abdullah Ahmed",
@@ -153,6 +154,7 @@ namespace Start.Net.Tests
             Assert.IsTrue(getChargeResponse.IsError);
             Assert.IsTrue(getChargeResponse.Error.Type == ErrorType.Request);
             Assert.AreEqual(string.Format("Couldn't find Charge with 'id'={0}.", chargeRequest.ChargeId), getChargeResponse.Error.Message);
+            Assert.AreEqual(ErrorCode.NotFound, getChargeResponse.Error.Code);
         }
 
         [TestMethod]

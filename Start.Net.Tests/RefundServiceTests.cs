@@ -19,8 +19,8 @@ namespace Start.Net.Tests
 
         public RefundServiceTests()
         {
-            _refundService = new StartRefundService("test_sec_k_63b07e79c620fcfee5a24");
-            _chargeService = new StartChargeService("test_sec_k_63b07e79c620fcfee5a24");
+            _refundService = new StartRefundService("test_sec_k_8512e94e69d6a46c67ab2");
+            _chargeService = new StartChargeService("test_sec_k_8512e94e69d6a46c67ab2");
 
             _workingCard = new Card()
             {

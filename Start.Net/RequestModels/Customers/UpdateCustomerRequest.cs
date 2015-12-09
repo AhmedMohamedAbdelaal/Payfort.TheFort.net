@@ -33,8 +33,10 @@ namespace Start.Net.RequestModels.Customers
             }
         }
 
+        [JsonProperty("name")]
         public string Name { get; set; }
 
+        [JsonProperty("email")]
         public string Email { get; set; }
 
         [JsonProperty("card")]
@@ -81,24 +83,5 @@ namespace Start.Net.RequestModels.Customers
             }
         }
 
-        internal bool ShouldSerializeName()
-        {
-            return !string.IsNullOrEmpty(this.Name);
-        }
-
-        internal bool ShouldSerializeEmail()
-        {
-            return !string.IsNullOrEmpty(this.Email);
-        }
-
-        internal bool ShouldSerializeDescription()
-        {
-            return !string.IsNullOrEmpty(this.Description);
-        }
-
-        internal bool ShouldSerializeCard()
-        {
-            return this.Card != null;
-        }
     }
 }

@@ -67,7 +67,6 @@
     <Compile Include="RequestModels\Charges\GetChargeRequest.cs" />
     <Compile Include="RequestModels\Charges\ListChargesRequest.cs" />
     <Compile Include="RequestModels\Customers\CreateCustomerRequest.cs" />
-    <Compile Include="RequestModels\Customers\DeleteCustomerRequest.cs" />
     <Compile Include="RequestModels\Customers\GetCustomerRequest.cs" />
     <Compile Include="RequestModels\Customers\ListCustomersRequest.cs" />
     <Compile Include="RequestModels\Customers\UpdateCustomerRequest.cs" />
@@ -82,7 +81,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResponseModels\ApiResponse.cs" />
     <Compile Include="ResponseModels\CaptureChargeResponse.cs" />
-    <Compile Include="ResponseModels\DeleteCustomerResponse.cs" />
     <Compile Include="ResponseModels\PagedApiResponse.cs" />
     <Compile Include="StartChargeService.cs" />
     <Compile Include="StartCustomerService.cs" />
