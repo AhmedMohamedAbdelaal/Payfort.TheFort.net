@@ -46,11 +46,7 @@ namespace Start.Net.Tests
             Assert.IsTrue(string.IsNullOrEmpty(response.Content.Id));
             Assert.IsTrue(response.Error.Type == ErrorType.Request);
             Assert.AreEqual("Request params are invalid.", response.Error.Message);
-            Assert.IsTrue(response.Error.Extras == @"{
-  ""card"": [
-    ""token has already been used""
-  ]
-}");
+            Assert.IsTrue(response.Error.Extras == "{\r\n  \"card\": [\r\n    \"token has already been used\"\r\n  ]\r\n}");
         }
 
         [TestMethod]
