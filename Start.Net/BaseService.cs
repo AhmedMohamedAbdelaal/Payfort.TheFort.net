@@ -56,9 +56,9 @@ namespace Start.Net
                     }
             }
 
-            string jsonResponse = httpResponse.Content.ReadAsStringAsync().Result;
             if (httpResponse != null)
             {
+                string jsonResponse = httpResponse.Content.ReadAsStringAsync().Result;
                 if (httpResponse.IsSuccessStatusCode)
                 {
                     apiResponse.Content = JsonConvert.DeserializeObject<ResponseType>(jsonResponse);
