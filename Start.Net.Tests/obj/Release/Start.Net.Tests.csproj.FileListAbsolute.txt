@@ -5,7 +5,6 @@ E:\GIT\PayFort_Start.Net\Start.Net.Tests\bin\Release\Microsoft.VisualStudio.Qual
 E:\GIT\PayFort_Start.Net\Start.Net.Tests\bin\Release\Newtonsoft.Json.dll
 E:\GIT\PayFort_Start.Net\Start.Net.Tests\bin\Release\Start.Net.dll
 E:\GIT\PayFort_Start.Net\Start.Net.Tests\bin\Release\Start.Net.pdb
-E:\GIT\PayFort_Start.Net\Start.Net.Tests\bin\Release\Microsoft.VisualStudio.QualityTools.UnitTestFramework.xml
 E:\GIT\PayFort_Start.Net\Start.Net.Tests\obj\Release\Start.Net.Tests.csprojResolveAssemblyReference.cache
 E:\GIT\PayFort_Start.Net\Start.Net.Tests\obj\Release\Start.Net.Tests.dll
 E:\GIT\PayFort_Start.Net\Start.Net.Tests\obj\Release\Start.Net.Tests.pdb

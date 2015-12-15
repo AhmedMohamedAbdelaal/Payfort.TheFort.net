@@ -23,6 +23,7 @@ namespace Start.Net
             _apiClient.BaseAddress = new Uri(EndpointBase);
             _apiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             _apiClient.DefaultRequestHeaders.Add("Authorization", GetAuthorizationHeaderValue(privateKey));
+            _apiClient.DefaultRequestHeaders.Add("User-agent", string.Format("Start.Net {0}", CoreAssembly.Version.ToString()));
 
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
         }

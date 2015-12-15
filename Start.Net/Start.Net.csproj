@@ -60,6 +60,7 @@
     <Compile Include="Entities\Item.cs" />
     <Compile Include="Entities\Refund.cs" />
     <Compile Include="Entities\ShoppingCart.cs" />
+    <Compile Include="Infrastructure\CoreAssembly.cs" />
     <Compile Include="Interfaces\IStartCustomerService.cs" />
     <Compile Include="Interfaces\IStartRefundService.cs" />
     <Compile Include="RequestModels\Charges\CaptureChargeRequest.cs" />

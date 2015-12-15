@@ -14,7 +14,7 @@ namespace Start.Net.ResponseModels
             get { return Error != null; }
         }
 
-        public StartApiErrorResponse Error { get; set; }
+        public StartApiErrorResponse Error { get; internal set; }
 
         public T Content { get; internal set; }
     }

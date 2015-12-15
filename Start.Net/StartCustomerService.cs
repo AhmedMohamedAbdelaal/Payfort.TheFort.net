@@ -17,6 +17,7 @@ namespace Start.Net
             ApiResponse<Customer> response = SendApiRequest<CreateCustomerRequest, Customer>(request);
             return response;
         }
+
         public ApiResponse<Customer> GetCustomer(GetCustomerRequest request)
         {
             ApiResponse<Customer> response = SendApiRequest<GetCustomerRequest, Customer>(request);
