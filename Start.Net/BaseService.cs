@@ -14,7 +14,7 @@ namespace Start.Net
 {
     public abstract class BaseService
     {
-        private string EndpointBase = @"https://api.start.payfort.com";
+        private string EndpointBase = @"https://api.start.payfort.com"; 
         private HttpClient _apiClient { get; set; }
 
         public BaseService(string privateKey)

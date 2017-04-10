@@ -9,6 +9,8 @@ namespace Start.Net.Interfaces
     {
         ApiResponse<Charge> CreateCharge(CreateChargeRequest request);
 
+        ApiResponse<Token> CreateToken(CreateTokenRequest request);
+
         ApiResponse<Charge> GetCharge(GetChargeRequest request);
 
         ApiResponse<CaptureChargeResponse> CaptureCharge(CaptureChargeRequest request);

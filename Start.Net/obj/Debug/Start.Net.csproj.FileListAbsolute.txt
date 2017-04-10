@@ -1,0 +1,9 @@
+E:\Projects\Softcube\Payfort\Start.net\Start.Net\bin\Debug\Start.Net.dll.config
+E:\Projects\Softcube\Payfort\Start.net\Start.Net\bin\Debug\Start.Net.dll
+E:\Projects\Softcube\Payfort\Start.net\Start.Net\bin\Debug\Start.Net.pdb
+E:\Projects\Softcube\Payfort\Start.net\Start.Net\bin\Debug\Newtonsoft.Json.dll
+E:\Projects\Softcube\Payfort\Start.net\Start.Net\bin\Debug\System.Net.Http.dll
+E:\Projects\Softcube\Payfort\Start.net\Start.Net\bin\Debug\Newtonsoft.Json.xml
+E:\Projects\Softcube\Payfort\Start.net\Start.Net\obj\Debug\Start.Net.csprojResolveAssemblyReference.cache
+E:\Projects\Softcube\Payfort\Start.net\Start.Net\obj\Debug\Start.Net.dll
+E:\Projects\Softcube\Payfort\Start.net\Start.Net\obj\Debug\Start.Net.pdb

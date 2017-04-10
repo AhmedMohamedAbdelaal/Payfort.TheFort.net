@@ -6,3 +6,11 @@ E:\GIT\PayFort_Start.Net\Start.Net.Tests\bin\Debug\Start.Net.pdb
 E:\GIT\PayFort_Start.Net\Start.Net.Tests\obj\Debug\Start.Net.Tests.csprojResolveAssemblyReference.cache
 E:\GIT\PayFort_Start.Net\Start.Net.Tests\obj\Debug\Start.Net.Tests.dll
 E:\GIT\PayFort_Start.Net\Start.Net.Tests\obj\Debug\Start.Net.Tests.pdb
+E:\Projects\Softcube\Payfort\Start.net\Start.Net.Tests\bin\Debug\Start.Net.Tests.dll.config
+E:\Projects\Softcube\Payfort\Start.net\Start.Net.Tests\bin\Debug\Start.Net.Tests.dll
+E:\Projects\Softcube\Payfort\Start.net\Start.Net.Tests\bin\Debug\Start.Net.Tests.pdb
+E:\Projects\Softcube\Payfort\Start.net\Start.Net.Tests\bin\Debug\Start.Net.dll
+E:\Projects\Softcube\Payfort\Start.net\Start.Net.Tests\bin\Debug\Start.Net.pdb
+E:\Projects\Softcube\Payfort\Start.net\Start.Net.Tests\obj\Debug\Start.Net.Tests.csprojResolveAssemblyReference.cache
+E:\Projects\Softcube\Payfort\Start.net\Start.Net.Tests\obj\Debug\Start.Net.Tests.dll
+E:\Projects\Softcube\Payfort\Start.net\Start.Net.Tests\obj\Debug\Start.Net.Tests.pdb

@@ -18,6 +18,12 @@ namespace Start.Net
             return response;
         }
 
+        public ApiResponse<Token> CreateToken(CreateTokenRequest request)
+        {
+            ApiResponse<Token> response = SendApiRequest<CreateTokenRequest, Token>(request);
+            return response;
+        }
+
         public ApiResponse<Charge> GetCharge(GetChargeRequest request)
         {
             ApiResponse<Charge> response = SendApiRequest<GetChargeRequest, Charge>(request);

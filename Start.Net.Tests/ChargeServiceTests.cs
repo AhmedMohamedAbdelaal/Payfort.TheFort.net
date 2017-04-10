@@ -15,13 +15,16 @@ namespace Start.Net.Tests
     {
         private IStartChargeService _service;
         private CreateChargeRequest _createChargeRequest;
+        private CreateTokenRequest _createTokenRequest;
         private IStartCustomerService _customerService;
-        private Card _workingCard; 
+        private IStartTokenService _tokenService;
+        private Card _workingCard;
 
-        public ChargeServiceTests()
+        public ChargeServiceTests(string _iPAddress)
         {
-            _service = new StartChargeService("test_sec_k_8512e94e69d6a46c67ab2");
-            _customerService = new StartCustomerService("test_sec_k_8512e94e69d6a46c67ab2");
+            _service = new StartChargeService("test_sec_k_142db882f73d7d31209f6");
+            _customerService = new StartCustomerService("test_sec_k_142db882f73d7d31209f6");
+            _tokenService = new StartTokenService("test_open_k_3a4fb497cc9d0c8c86a4");
             _workingCard = new Card()
             {
                 Name = "Abdullah Ahmed",
@@ -31,11 +34,20 @@ namespace Start.Net.Tests
                 Number = "4242424242424242"
             };
 
+            _createTokenRequest = new CreateTokenRequest()
+            {
+                Number = "4242424242424242",
+                Exp_Month = 12,
+                Exp_Year = 2020,
+                Cvc = "123",
+                Name = "Abdullah Ahmed"
+            };
             _createChargeRequest = new CreateChargeRequest()
             {
                 Amount = 10000,
                 Currency = Currency.AED,
-                Email = "john.doe@gmail.com"
+                Email = "john.doe@gmail.com",
+                Ip = _iPAddress
             };
         }
 
@@ -58,6 +70,8 @@ namespace Start.Net.Tests
         {
             _createChargeRequest.CardDetails = _workingCard;
 
+            ApiResponse<Token> responseToken = _tokenService.CreateToken(_createTokenRequest);
+            _createChargeRequest.CardToken = responseToken.Content.Id;
             ApiResponse<Charge> response = _service.CreateCharge(_createChargeRequest);
 
             Assert.IsTrue(!string.IsNullOrEmpty(response.Content.Id));
@@ -288,7 +302,7 @@ namespace Start.Net.Tests
 
             Charge createChargeResponse = _service.CreateCharge(_createChargeRequest).Content;
             ListChargesRequest request = new ListChargesRequest();
-            
+
             request.After = afterFilter;
 
             PagedApiResponse<Charge> charges = _service.ListCharges(request);
