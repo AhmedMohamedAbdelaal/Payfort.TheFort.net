@@ -11,7 +11,7 @@ namespace Start.Net
         public StartRefundService(string privateKey) : base(privateKey)
         {
 
-        }
+        }   
 
         public ApiResponse<Refund> RefundCharge(RefundChargeRequest request)
         {
