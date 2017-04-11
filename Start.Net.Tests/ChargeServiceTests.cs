@@ -22,9 +22,9 @@ namespace Start.Net.Tests
 
         public ChargeServiceTests(string _iPAddress)
         {
-            _service = new StartChargeService("test_sec_k_142db882f73d7d31209f6");
-            _customerService = new StartCustomerService("test_sec_k_142db882f73d7d31209f6");
-            _tokenService = new StartTokenService("test_open_k_3a4fb497cc9d0c8c86a4");
+            _service = new StartChargeService("test_sec_k_8512e94e69d6a46c67ab2");
+            _customerService = new StartCustomerService("test_sec_k_8512e94e69d6a46c67ab2");
+            _tokenService = new StartTokenService("test_open_k_3gfew76877gy689798hc86a4");
             _workingCard = new Card()
             {
                 Name = "Abdullah Ahmed",
